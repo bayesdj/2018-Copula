@@ -1,0 +1,51 @@
+#x1 = random.uniform(end0,end1,size=mcN)
+#fe = rvx.pdf(tile(x1,(N,1))-tile(fmu(pnmc),(mcN,1)).T).mean(0)
+#u = rvu.rvs(size=mcN)
+#idx = u<=fe
+#fxmc = x1[u<=fe]
+# %timeit e1 = outer(x1,ones(N))-outer(fmu(pnmc),ones(mcN)).T
+
+#%timeit e = tile(xGrid,(N,1)).T-fmupnmc;  Fx = rvx.cdf(e).mean(1)#tile(fmu(pnmc),(ndx,1))
+
+Apply Bayes rule to $p(\x_{k-1}|\z_{1:k-2})$ in \eqref{1.3}. with Bayes rule and law of total probability.
+
+#def buildRev4(xGrid,fmupnmc,Fx,Fz):
+#    N = len(fmupnmc);
+#    U = random.uniform(size=N)
+#    U = norm.ppf(U,loc=rho*norm.ppf(Fz),scale=sqrt(1-rho2))
+#    U = norm.cdf(U)
+#    U.sort()
+#
+#    idxU = np.searchsorted(Fx,U)
+#    X = np.empty(N)
+#    adj = 0; m = 10; k = 0
+#    if idxU[0] == 0:
+#        v = xGrid[0]-abs(xGrid[0])*m
+#        xGrid = np.insert(xGrid,0,v)
+#        adj += 1
+#    if idxU[-1]== ndx:
+#        v = xGrid[-1]+abs(xGrid[-1])*m
+#        xGrid = np.append(xGrid,v)        
+#    idxU = idxU+adj if adj > 0 else idxU
+#    idxset = set(idxU)
+#    
+#    
+#    for i in idxset:
+#        Ui = U[idxU==i]
+#        x0 = xGrid[i-1]
+#        x1 = xGrid[1]
+#        while x0 < x1:
+#            
+#
+#    
+#    X = np.empty(N)
+#    x0 = xGrid[idxU-1]
+#    x1 = xGrid[idxU]
+#    x = x0[0]
+#    t0 = time.time()
+#    for i in range(N):
+#        x = root1(x,x1[i],fmupnmc,U[i])
+#        X[i] = x
+#    t1 = time.time()
+#    print(f'{round(t1-t0,4)} seconds')
+#    return X
